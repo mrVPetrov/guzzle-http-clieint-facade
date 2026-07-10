@@ -1,6 +1,6 @@
 <?php
 
-	namespace mrvpetrov\Http\RequestOptions;
+	namespace mrvpetrov\Http\Client\Facade;
 
 	use ReturnTypeWillChange;
 
