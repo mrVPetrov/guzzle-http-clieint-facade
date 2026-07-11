@@ -16,6 +16,11 @@
 		public ?int $timeout = null;
 		public ?int $connectTimeout = null;
 		public ?HttpHeaderList $headers = null;
+		public function addHeader(HttpHeader $header): self {
+			if ($this->headers == null) $this->headers = new HttpHeaderList();
+			$this->headers->append($header);
+			return $this;
+		}
 		public bool|array|null $allowRedirects = null;
 
 		/**
@@ -27,6 +32,10 @@
 		 * @var bool|string|null
 		 */
 		public bool|string|null $verify = null;
+		public function setVerify(?bool $verify): self {
+			$this->verify = $verify;
+			return $this;
+		}
 
 		public function asArray(): array {
 			$_options = [];
@@ -35,6 +44,7 @@
 			if(!empty($this->connectTimeout)) $_options['connect_timeout'] = $this->connectTimeout;
 			if(!empty($this->headers)) $_options['headers'] = $this->headers->asArray();
 			if(!empty($this->allowRedirects)) $_options['allow_redirects'] = $this->allowRedirects;
+			if(!empty($this->verify)) $_options['verify'] = $this->verify;
 
 			return $_options;
 		}
