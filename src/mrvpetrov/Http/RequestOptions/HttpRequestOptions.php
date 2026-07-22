@@ -6,13 +6,25 @@
 	use Psr\Http\Message\StreamInterface;
 
 	class HttpRequestOptions {
+		public static function new(): self {
+			return new self();
+		}
+
 		/**
 		 * Request body
 		 * @var string|StreamInterface|null
 		 */
 		public string|StreamInterface|null $body = null;
+		public function setBody(string|StreamInterface|null $body): self {
+			$this->body = $body;
+			return $this;
+		}
 
 		public ?HttpJson $json = null;
+		public function setJson(HttpJson $json): self {
+			$this->json = $json;
+			return $this;
+		}
 
 		/**
 		 * Request cookies
@@ -51,7 +63,6 @@
 			if(!empty($this->body)) $_options['body'] = $this->body;
 			if(!empty($this->cookies)) $_options['cookies'] = $this->cookies;
 			if(!empty($this->headers)) $_options['headers'] = $this->headers->asArray();
-			if(!empty($this->verify)) $_options['verify'] = $this->verify;
 
 			return $_options;
 		}
