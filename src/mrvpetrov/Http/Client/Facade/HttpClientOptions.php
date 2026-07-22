@@ -44,7 +44,7 @@
 			if(!empty($this->connectTimeout)) $_options['connect_timeout'] = $this->connectTimeout;
 			if(!empty($this->headers)) $_options['headers'] = $this->headers->asArray();
 			if(!empty($this->allowRedirects)) $_options['allow_redirects'] = $this->allowRedirects;
-			if(!empty($this->verify)) $_options['verify'] = $this->verify;
+			if($this->verify !== null) $_options['verify'] = $this->verify;
 
 			return $_options;
 		}
