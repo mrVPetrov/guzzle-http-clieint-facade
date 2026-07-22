@@ -59,7 +59,7 @@
 
 		public function getOptionsAsArray(): array {
 			$_options = [];
-			if(!empty($this->json)) $_options['json'] = $this->json;
+			if(!empty($this->json)) $_options['json'] = (string)$this->json;
 			if(!empty($this->body)) $_options['body'] = $this->body;
 			if(!empty($this->cookies)) $_options['cookies'] = $this->cookies;
 			if(!empty($this->headers)) $_options['headers'] = $this->headers->asArray();
